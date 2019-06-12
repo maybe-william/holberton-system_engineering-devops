@@ -1,0 +1,1 @@
+# The script in this directory prints the current working directory.
