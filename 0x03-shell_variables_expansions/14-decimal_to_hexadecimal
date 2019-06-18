@@ -1,2 +1,2 @@
 #!/bin/bash
-echo -n ${BASE16[$((10#$DECIMAL))]}
+printf "%x\n" $DECIMAL
