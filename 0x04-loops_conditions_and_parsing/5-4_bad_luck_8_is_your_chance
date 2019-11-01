@@ -7,7 +7,7 @@ do
     echo "bad luck"
   elif [ "$i" == "7" ]; then
     echo "good luck"
-  elif [ "1" == "1" ]; then
+  else
     echo "Holberton School"
   fi
   i=$((i+1))
