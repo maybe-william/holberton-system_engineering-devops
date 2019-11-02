@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# This script displays info about holbertonschool
+found="0"
+for f in *
+do
+	if [ "$f" == "holbertonschool" ]; then
+		found="1"
+	fi
+done
+
+if [ $found == "0" ]; then
+	echo "file does not exist"
+else
+	x=$(stat -c "%F" holbertonschool)
+	echo "file exists"
+
+	if [ "$(stat -c "%s" holbertonschool)" == "0" ]; then
+		echo "file is empty"
+	else
+		echo "file is not empty"
+	fi
+	
+	if [ "$(echo "$x" | cut -c-3)" == "reg" ]; then
+		echo "is a regular file"
+	fi
+fi
