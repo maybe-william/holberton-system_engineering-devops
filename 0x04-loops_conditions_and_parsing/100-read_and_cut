@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# This script displays username, uid, and homedir from /etc/passwd
+cut -d':' -f1,3,6 < /etc/passwd
