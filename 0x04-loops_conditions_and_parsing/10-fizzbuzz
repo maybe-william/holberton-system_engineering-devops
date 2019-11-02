@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# This script displays info about holbertonschool
+num="1"
+f="Fizz"
+b="Buzz"
+temp=""
+while [ $num -lt "101" ]
+do
+	if [ $(( num % 3 )) == "0" ]; then
+		temp="$temp$f"
+	fi
+	if [ $(( num % 5 )) == "0" ]; then
+		temp="$temp$b"
+	fi
+	if [ "$temp" == "" ]; then
+		temp="$num"
+	fi
+	echo "$temp"
+	temp=""
+	num=$(( num + 1 ))
+done
