@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# This script displays all lines that have pid for bash
+# shellcheck disable=SC2009
+ps axu | grep "bash"

@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# This script displays To infinity and beyond indefinitely
+mine="1"
+trap "echo I am invincible!!!" SIGTERM
+while [ $mine == "1" ]
+do
+	echo "To infinity and beyond"
+	sleep 2
+done
+
+
