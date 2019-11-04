@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+# This script manages the "manage_my_process" daemon
+
+usage () {
+	echo 'Usage: manage_my_process {start|stop|restart}'
+}
+
+strt () {
+	./manage_my_process &
+	echo "$!" > /var/run/my_process.pid
+	disown
+}	
+
+rstrt () {
+	stp
+	strt
+}
+
+stp () {
+	kill "$(cat /var/run/my_process.pid)"
+	rm /var/run/my_process.pid
+}
+
+
+if [ $# != "1" ]
+then
+	usage
+	exit
+fi
+
+case $1 in
+	"start")
+		strt
+		echo "manage_my_process started"
+		exit
+		;;
+	"stop")
+		stp
+		echo "manage_my_process stopped"
+		exit
+		;;
+	"restart")
+		rstrt
+		echo "manage_my_process restarted"
+		exit
+		;;
+	*)
+		usage
+		exit
+		;;
+esac
