@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# configure an ubuntu server with 127.0.0.2 for LH and 8.8.8.8 for facebook.com
+cp /etc/hosts ~/hosts.new
+echo '127.0.0.2 localhost' > ~/hosts.newnew
+echo '8.8.8.8 facebook.com' >> ~/hosts.newnew
+grep -Pv '\d+\.\d+\.\d+\.\d+\s+(localhost|facebook.com)' < ~/hosts.new >> ~/hosts.newnew
+sudo cp -f ~/hosts.newnew /etc/hosts
