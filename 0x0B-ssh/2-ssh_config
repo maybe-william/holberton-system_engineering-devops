@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
 # configure the ssh config file to use ~/.ssh/holberton w/o password
 
-
+touch ~/.ssh/config
+echo 'PasswordAuthentication no' > ~/.ssh/config
+echo 'IdentityFile ~/.ssh/holberton' >> ~/.ssh/config
