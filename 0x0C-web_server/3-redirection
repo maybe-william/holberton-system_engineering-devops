@@ -12,7 +12,14 @@ sudo cp temp.html /var/www/html/index.html
 rm temp.html
 
 # configure redirect
-temp="\trewrite \^\/redirect_me\$ https:\/\/www.youtube.com\/watch\?v=QH2-TGUlwu4 permanent;\n"
-sudo sed -i -E "s/(^\s+location \/ \{)/$temp\1/" /etc/nginx/sites-enabled/default
+
+temp="server \{\n\tlisten 80 default_server;\n\tlisten \[::\]:80 default_server;\n\troot \/var\/www\/html;\n\tindex index.html index.htm index.nginx-debian.html;\n\tserver_name _;\n\tlocation \/redirect_me \{\n\t\treturn 301 https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4;\n\t\}\n\tlocation \/ \{\n\t\ttry_files \$uri \$uri\/ =404;\n\t\}\n\}"
+
+sudo mkdir -p /etc/nginx/sites-enabled
+sudo touch tempsite
+echo "." | sudo tee tempsite
+sudo sed -i -E "s/./$temp/" tempsite
+sudo cp tempsite /etc/nginx/sites-enabled/default
+sudo rm tempsite
 sudo service nginx stop
 sudo service nginx start
