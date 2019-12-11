@@ -14,4 +14,5 @@ rm temp.html
 # configure redirect
 temp="\trewrite \^\/redirect_me\$ https:\/\/www.youtube.com\/watch\?v=QH2-TGUlwu4 permanent;\n"
 sudo sed -i -E "s/(^\s+location \/ \{)/$temp\1/" /etc/nginx/sites-enabled/default
+sudo service nginx stop
 sudo service nginx start
