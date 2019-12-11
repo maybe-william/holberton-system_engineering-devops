@@ -5,7 +5,6 @@
 sudo apt-get update
 sudo apt-get -y install nginx
 sudo mkdir -p /var/www/html/
-sudo service nginx start
 
 # configure default index page
 echo 'Holberton School for the win!' > temp.html
@@ -15,5 +14,4 @@ rm temp.html
 # configure redirect
 temp="\tlocation \/redirect_me \{\n\t\treturn 301 https:\/\/www.youtube.com\/watch\?v=QH2-TGUlwu4;\n\t\}\n"
 sudo sed -i -E "s/(^\s+location \/ \{)/$temp\1/" /etc/nginx/sites-enabled/default
-sudo systemctl reload nginx.service
-sudo systemctl restart nginx.service
+sudo service nginx start
