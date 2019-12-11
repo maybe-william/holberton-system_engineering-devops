@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# Install nginx on an ubuntu 16.06 server with redirect
+
+# install nginx
+sudo apt-get update
+sudo apt-get -y install nginx
+sudo mkdir -p /var/www/html/
+sudo service nginx start
+
+# configure default index page
+echo 'Holberton School for the win!' > temp.html
+sudo cp temp.html /var/www/html/index.html
+rm temp.html
+
+# configure redirect
+temp="\tlocation \/redirect_me \{\n\t\treturn 301 https:\/\/www.youtube.com\/watch\?v=QH2-TGUlwu4;\n\t\}\n"
+sudo sed -i -E "s/(^\s+location \/ \{)/$temp\1/" /etc/nginx/sites-enabled/default
+sudo systemctl reload nginx.service
