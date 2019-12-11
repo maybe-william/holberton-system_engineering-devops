@@ -6,6 +6,6 @@ sudo apt-get update
 sudo apt-get -y install nginx
 
 # configure default index page
-echo "Holberton School for the win!" > temp.html
+echo 'Holberton School for the win!' > temp.html
 sudo cp temp.html /var/www/html/index.html
 rm temp.html
