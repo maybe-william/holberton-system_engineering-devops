@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Install nginx on an ubuntu 16.06 server
+
+# install nginx
+sudo apt-get update
+sudo apt-get -y install nginx
+
+# configure default index page
+echo "Holberton School" > temp.html
+sudo cp temp.html /var/www/html/index.nginx-debian.html
+rm temp.html
