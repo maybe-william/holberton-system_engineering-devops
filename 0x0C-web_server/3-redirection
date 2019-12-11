@@ -21,5 +21,4 @@ echo "." | sudo tee tempsite
 sudo sed -i -E "s/./$temp/" tempsite
 sudo cp tempsite /etc/nginx/sites-available/default
 sudo rm tempsite
-sudo service nginx stop
 sudo service nginx start
