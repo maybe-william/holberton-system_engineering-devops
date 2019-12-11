@@ -7,5 +7,5 @@ sudo apt-get -y install nginx
 
 # configure default index page
 echo "Holberton School" > temp.html
-sudo cp temp.html /var/www/html/index.nginx-debian.html
+sudo cp temp.html /var/www/html/index.html
 rm temp.html
