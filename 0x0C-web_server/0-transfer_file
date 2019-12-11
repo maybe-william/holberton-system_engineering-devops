@@ -9,7 +9,7 @@ fi
 
 if [ $# -ne 3 ]
 then
-	scp -o StrictHostKeyChecking=no -i "$4" "$1" "$3"@"$2":~/afile
+	scp -i "$4" -o StrictHostKeyChecking=no "$1" "$3"@"$2":~/afile
 	exit
 fi
 
