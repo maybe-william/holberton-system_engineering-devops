@@ -5,6 +5,7 @@
 sudo apt-get update
 sudo apt-get -y install nginx
 sudo mkdir -p /var/www/html/
+sudo service nginx start
 
 # configure default index page
 echo 'Holberton School for the win!' > temp.html
