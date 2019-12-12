@@ -1,3 +1,4 @@
+# Makes a server.
 package { 'nginx':
   ensure => present,
 }
