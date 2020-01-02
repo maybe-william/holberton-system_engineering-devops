@@ -12,11 +12,17 @@ $header = generate('/bin/cat', '/etc/hostname')
 file_line { 'custom_header':
   ensure => present,
   path   => '/etc/nginx/sites-available/default',
-  after  => 'server {',
+  after  => '^server {',
   line   => "add_header X-Served-By ${header};",
 }
 
 # start nginx
 exec { 'start_server':
   command => '/usr/sbin/service nginx start',
+}
+exec { 'reload_server':
+  command => '/usr/sbin/service nginx reload',
+}
+exec { 'restart_server':
+  command => '/usr/sbin/service nginx restart',
 }
