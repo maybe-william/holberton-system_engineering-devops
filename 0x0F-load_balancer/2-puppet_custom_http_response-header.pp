@@ -13,7 +13,7 @@ file_line { 'custom_header':
   ensure => present,
   path   => '/etc/nginx/sites-available/default',
   after  => '^server {',
-  line   => "add_header X-Served-By ${header};",
+  line   => "\tadd_header X-Served-By ${header};",
 }
 
 # start nginx
@@ -22,6 +22,7 @@ exec { 'start_server':
 }
 exec { 'reload_server':
   command => '/usr/sbin/service nginx reload',
+  require => File_Line['custom_header'],
 }
 exec { 'restart_server':
   command => '/usr/sbin/service nginx restart',
