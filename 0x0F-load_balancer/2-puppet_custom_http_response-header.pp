@@ -1,15 +1,17 @@
 # Install nginx on an ubuntu 16.06 server
+include stdlib
 
 # install nginx
 package { 'nginx':
   name => 'nginx',
 }
 
+$header = generate('/bin/cat', '/etc/hostname')
+
 # configure custom header
 file_line { 'custom_header':
   ensure => present,
-  $header = generate('/bin/cat', '/etc/hostname')
-  path   => /etc/nginx/sites-available/default
+  path   => '/etc/nginx/sites-available/default',
   after  => 'server {',
   line   => "add_header X-Served-By ${header};",
 }
