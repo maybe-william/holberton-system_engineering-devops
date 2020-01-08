@@ -10,7 +10,10 @@ fi
 TYPE=$(dig "$SUB.$1" | awk '/ANSWER S/{getline; print $4}')
 IP=$(dig "$SUB.$1" | awk '/ANSWER S/{getline; print $5}')
 printstuff () {
-	echo "The subdomain $1 is a $2 record and points to $3"
+	if [ $3 ]
+	then
+		echo "The subdomain $1 is a $2 record and points to $3"
+	fi
 }
 
 printstuff "$SUB" "$TYPE" "$IP"
