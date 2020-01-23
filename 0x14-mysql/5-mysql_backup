@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Create a mysql dump of all databases using user root
+temppass=""
+if [ $# -gt 0 ]
+then
+	temppass=$1
+fi
+sudo mysqldump -uroot -p"$temppass" -A | sudo tee backup.sql
+
+# And compress it
+tar -czvf "$(date '+%d-%m-%Y').tar.gz" backup.sql
