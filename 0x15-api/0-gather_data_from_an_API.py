@@ -20,6 +20,8 @@ if __name__ == "__main__":
 
     tasks = [t for t in tasks if t.get("completed")]
     name = user.get("name")
+    if name is None:
+        exit()
     print("Employee {} is done with tasks({}/{}):".format(name, done, total))
     for task in tasks:
         print("\t" + task.get("title"))
