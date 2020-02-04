@@ -24,4 +24,4 @@ if __name__ == "__main__":
         exit()
     print("Employee {} is done with tasks({}/{}):".format(name, done, total))
     for task in tasks:
-        print("\t" + task.get("title"))
+        print("\t " + task.get("title"))
