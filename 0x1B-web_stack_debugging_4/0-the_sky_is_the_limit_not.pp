@@ -1,7 +1,7 @@
 # I forgot to put this comment.
 
 exec { 'config':
-  command  => "/bin/sed -i \'s/ULIMIT=\".*\"/ULIMIT=\"-n 1500\"/\' /\
+  command  => "/bin/sed -i \'s/ULIMIT=\".*\"/ULIMIT=\"-n 1500000\"/\' /\
 etc/nginx/nginx.conf",
 }
 exec { 'restarting':
