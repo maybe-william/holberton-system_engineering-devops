@@ -1,9 +1,10 @@
 # I forgot to put this comment.
 
 exec { 'config':
-  command  => "/bin/sed -i \'s/worker_connections .*;/worker_connections 1000000000;/\' /\
+  command  => "/bin/sed -i \'s/ULIMIT=\".*\"/ULIMIT=\"-n 1500\"/\' /\
 etc/nginx/nginx.conf",
 }
 exec { 'restarting':
-  command  => "/usr/sbin/nginx -s reload",
+  command => '/usr/sbin/service nginx restart',
+  onlyif  => '/usr/sbin/service nginx reload',
 }
